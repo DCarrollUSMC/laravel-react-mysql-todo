@@ -62466,19 +62466,19 @@ function (_Component) {
       error: ''
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.createTask = _this.createTask.bind(_assertThisInitialized(_this));
     return _this;
   }
   /**
    * Input form handler method
    * 
-   * @param {string} e 
+   * @param {object} e 
    */
 
 
   _createClass(TaskForm, [{
     key: "handleChange",
     value: function handleChange(e) {
-      console.log(e);
       this.setState({
         taskInput: e.target.value
       });
@@ -62500,37 +62500,33 @@ function (_Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(e);
                 e.preventDefault();
-                _context.prev = 2;
-                _context.next = 5;
+                _context.prev = 1;
+                _context.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/tasks', {
                   title: this.state.taskInput
                 });
 
-              case 5:
+              case 4:
                 response = _context.sent;
-                //TODO: Add Redux and store response
-                // Reset taskInput in local state
+                // Reset taskInput in local state to clear form
                 this.setState({
                   taskInput: ''
                 });
-                _context.next = 12;
+                _context.next = 11;
                 break;
 
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context["catch"](2);
-                this.setState({
-                  error: _context.t0
-                });
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](1);
+                console.log('There was an error!', _context.t0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 9]]);
+        }, _callee, this, [[1, 8]]);
       }));
 
       function createTask(_x) {

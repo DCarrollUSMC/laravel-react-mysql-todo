@@ -16,15 +16,15 @@ export default class TaskForm extends Component {
             error: ''
         };
         this.handleChange = this.handleChange.bind(this);
+        this.createTask = this.createTask.bind(this);
     }
 
     /**
      * Input form handler method
      * 
-     * @param {string} e 
+     * @param {object} e 
      */
     handleChange(e) {
-        console.log(e);
         this.setState({
             taskInput: e.target.value
         });
@@ -36,19 +36,17 @@ export default class TaskForm extends Component {
      * @param {object} e 
      */
     async createTask(e) {
-        console.log(e);
         e.preventDefault();
         try {
             const response = await axios.post('/tasks', {
                 title: this.state.taskInput
             })
-            //TODO: Add Redux and store response
 
-            // Reset taskInput in local state
+            // Reset taskInput in local state to clear form
             this.setState({ taskInput: '' });
         }
         catch(e) {
-            this.setState({ error: e });
+            console.log('There was an error!', e);
         }
     }
 

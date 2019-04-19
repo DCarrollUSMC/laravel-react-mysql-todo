@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Add Resource Route for TaskController
+Route::resource('tasks', 'TaskController');
