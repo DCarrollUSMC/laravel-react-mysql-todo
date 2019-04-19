@@ -40,7 +40,7 @@ export default class TaskForm extends Component {
         e.preventDefault();
         try {
             const response = await axios.post('/tasks', {
-                taskInput: this.state.taskInput
+                title: this.state.taskInput
             })
             //TODO: Add Redux and store response
 
