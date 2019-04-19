@@ -38,15 +38,18 @@ export default class TaskForm extends Component {
     async createTask(e) {
         e.preventDefault();
         try {
-            const response = await axios.post('/tasks', {
+            const response = await axios.post('/tasks/12', {
                 title: this.state.taskInput
             })
+
+            // TODO: Add Redux to store response for TaskList
 
             // Reset taskInput in local state to clear form
             this.setState({ taskInput: '' });
         }
         catch(e) {
-            console.log('There was an error!', e);
+            // TODO: Display error message to user
+            this.setState({ error: e.message });
         }
     }
 
