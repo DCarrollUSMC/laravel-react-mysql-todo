@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Todo App</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -58,6 +58,18 @@
                 text-transform: uppercase;
             }
 
+            .headline {
+                color: #636b6f;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+            .headline > a {
+                letter-spacing: .1rem;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -80,19 +92,14 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <div class="title m-b-md">Todo App</div>
+                @if (Route::has('login'))
+                    @auth
+                        <span class="headline"><a href="{{ url('/home') }}">Click Here</a> to view your tasks.<span>
+                    @else
+                        <span class="headline"><a href="{{ url('login') }}">Click Here</a> to login and view your tasks.</span>
+                    @endauth
+                @endif
             </div>
         </div>
     </body>
