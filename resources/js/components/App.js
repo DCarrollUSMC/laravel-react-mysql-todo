@@ -6,8 +6,8 @@
 
 import React, { Component } from 'react';
 
-import TaskForm from './TaskForm';
-import TaskList from './TaskList';
+import TaskForm from '../components/TaskForm';
+import TaskList from '../components/TaskList';
 
 export default class App extends Component {
     render() {

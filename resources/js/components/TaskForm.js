@@ -5,10 +5,20 @@
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addTask } from '../actions';
 import axios from 'axios';
 
-export default class TaskForm extends Component {
+// Include redux action for addTask
+function mapDispatchToProps(dispatch) {
+    return {
+        addTask: tasks => dispatch(addTask(tasks))
+    };
+}
 
+class TaskForm extends Component {
+
+    // Set initial state and bind functions
     constructor(props) {
         super(props);
         this.state = {
@@ -38,11 +48,16 @@ export default class TaskForm extends Component {
     async createTask(e) {
         e.preventDefault();
         try {
-            const response = await axios.post('/tasks/12', {
+            const response = await axios.post('/tasks', {
                 title: this.state.taskInput
             })
-
-            // TODO: Add Redux to store response for TaskList
+            const { id, title } = response.data;
+            const task = {
+                id: id,
+                title: title
+            }
+            // Add task to redux state
+            this.props.addTask(task);
 
             // Reset taskInput in local state to clear form
             this.setState({ taskInput: '' });
@@ -83,3 +98,5 @@ export default class TaskForm extends Component {
         );
     }
 }
+
+export default connect(null, mapDispatchToProps)(TaskForm);
