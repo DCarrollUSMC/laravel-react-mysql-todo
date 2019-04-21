@@ -69236,7 +69236,7 @@ function (_Component) {
           }
         }, "Done")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, task.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
           className: "float-right"
-        }, "Updated: ", task.updated_at), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Created By: ", task.user.name));
+        }, "Updated: ", task.updated_at));
       })))));
     }
   }]);

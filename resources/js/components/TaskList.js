@@ -85,7 +85,6 @@ class TaskList extends Component {
                                         </div>
                                         <p>{task.title}</p>
                                         <p className='float-right'>Updated: {task.updated_at}</p>
-                                        <p>Created By: {task.user.name}</p>
                                     </li>
                                 )
                             })}
