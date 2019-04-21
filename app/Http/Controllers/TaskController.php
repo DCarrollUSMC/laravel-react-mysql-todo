@@ -19,7 +19,7 @@ class TaskController extends Controller
      * @param Task $task
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Task $task){
+    public function index(Request $request, Task $task) {
         // Retrieve all tasks for the current user
         $allTasks = $task->whereIn('user_id', $request->user())->with('user');
         $tasks = $allTasks->orderBy('created_at', 'desc')->take(10)->get();
@@ -46,8 +46,7 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         // TODO: Improve validation
         $validatedData = $request->validate([
             'title' => 'required|max:255'
@@ -77,10 +76,12 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+	public function edit($id) {
+		$task = Task::findOrFail($id);
+		return response()->json([
+			'task' => $task,
+		]);
+	}
 
     /**
      * Update the specified resource in storage.
@@ -89,9 +90,11 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $input = $request->all();
+		$task = Task::findOrFail($id);
+        $task->update($input);
+		return response()->json($task->with('user')->find($task->id));
     }
 
     /**
@@ -100,8 +103,7 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         Task::findOrFail($id)->delete();
     }
 }

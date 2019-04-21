@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setTasks, deleteTask } from '../actions';
 import axios from 'axios';
@@ -78,8 +79,13 @@ class TaskList extends Component {
                             {tasks.map(task => {
                                 return (
                                     <li key={task.id} className='list-group-item'>
-                                        <button type='button' className='btn btn-success float-right' onClick={() => this.deleteTask(task.id)}>Done</button>
+                                        <div className='btn-group float-right'>
+                                            <Link className="btn btn-warning" to={`/${task.id}/edit`}>Edit</Link>
+                                            <button type='button' className='btn btn-success' onClick={() => this.deleteTask(task.id)}>Done</button>
+                                        </div>
                                         <p>{task.title}</p>
+                                        <p className='float-right'>Updated: {task.updated_at}</p>
+                                        <p>Created By: {task.user.name}</p>
                                     </li>
                                 )
                             })}
