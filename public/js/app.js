@@ -62063,7 +62063,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69234,9 +69234,7 @@ function (_Component) {
           onClick: function onClick() {
             return _this2.deleteTask(task.id);
           }
-        }, "Done")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, task.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          className: "float-right"
-        }, "Updated: ", task.updated_at));
+        }, "Done")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, task.title));
       })))));
     }
   }]);

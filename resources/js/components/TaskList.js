@@ -84,7 +84,6 @@ class TaskList extends Component {
                                             <button type='button' className='btn btn-success' onClick={() => this.deleteTask(task.id)}>Done</button>
                                         </div>
                                         <p>{task.title}</p>
-                                        <p className='float-right'>Updated: {task.updated_at}</p>
                                     </li>
                                 )
                             })}
